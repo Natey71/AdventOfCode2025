@@ -6,7 +6,9 @@ Mark tasks as complete by changing `[ ]` → `[x]`.
 
 ## **Day 1**
 - [x] Task 1
-- [ ] Task 2
+-- This was not as bad
+- [x] Task 2
+-- This beat the crap out of me
 
 ## **Day 2**
 - [ ] Task 1
