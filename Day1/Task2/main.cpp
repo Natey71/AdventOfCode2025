@@ -21,27 +21,26 @@ int applyInstruction(int current, const std::string& instruction) {
 }
 
 // Use in countMovement to make sure we don't divide by negative number
-long long floor_div(long long x, long long d) {
+// Writing code was messing up the floor div and I had mistakes so moved to function
+int floor_div(int x, int d) {
     if (x >= 0) return x / d;
-    long long q = x / d;     
-    long long r = x % d;
+    int q = x / d;     
+    int r = x % d;
     if (r == 0) return q;    
     return q - 1; 
 }
 
-// Count how many times we pass (point at 0)
-// moved from int to long for big numbers
-// This was learning curve moving to cpp
-long countMovement(int start, int amount, char direction) {
-    long s = start;
-    long a = amount;
+// Count how many times we pass (point at 0)p
+int countMovement(int start, int amount, char direction) {
+    int s = start;
+    int a = amount;
 
     if (direction == 'R') {
-        long end = s + a;
+        int end = s + a;
         return floor_div(end, 100) - floor_div(s, 100);
     } else { 
         // it will move to left 'L'
-        long end = s - a;
+        int end = s - a;
         // Make sure we don't divide by negative number
         return floor_div(s - 1, 100) - floor_div(end - 1, 100);
     }
@@ -59,7 +58,7 @@ int main()
     // Start dial position
     int pos = 50;   
     // Count how many times it passes/hits 0
-    long totalHits = 0;   
+    int totalHits = 0;   
 
     std::string line;
     while (std::getline(file, line)) {
@@ -83,3 +82,4 @@ int main()
     file.close();
     return 0;
 }
+
