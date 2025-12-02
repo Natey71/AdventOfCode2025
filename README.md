@@ -11,7 +11,7 @@ Mark tasks as complete by changing `[ ]` → `[x]`.
 -- This beat the crap out of me
 
 ## **Day 2**
-- [ ] Task 1
+- [x] Task 1
 - [ ] Task 2
 
 ## **Day 3**
