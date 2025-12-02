@@ -24,9 +24,13 @@ std::vector<long> getNumberRange(long start, long end) {
 
 // Check if number has repeated sequence
 bool isValidId(long num) {
+  /*
+  Part 1
+  
   std::string id = std::to_string(num);
   // If number is not even it won't have duplicate
   if(id.size() % 2 != 0) return false;
+  
   // Get length and divide by 2 to find duplicates
   size_t middle = id.length() / 2;
   
@@ -36,7 +40,40 @@ bool isValidId(long num) {
   std::string right = id.substr(middle);
   // If it is duplicate then return true
   return left == right;
+  */
   
+  ////////////
+  // Part 2
+  ////////////
+  // int to string
+  std::string s = std::to_string(num);
+  size_t n = s.size();
+  
+  // p as position <= size of string / 2
+  for (size_t p = 1; p <= n / 2; ++p) {
+      // if division doesn't get us to 0
+      if (n % p != 0) continue;
+
+      // store pattern or size p
+      std::string pattern = s.substr(0, p);
+      
+      // set ok to true to continue numbers that don't meet reqs
+      bool ok = true;
+      // for pos of p < size (n) pos sum of p
+      for (size_t pos = p; pos < n; pos += p) {
+        // if pos substring at p != pattern return false this is valid number
+        if (s.substr(pos, p) != pattern) {
+          ok = false;
+          break;
+        }
+      }
+
+      if (ok) {
+          return true;  
+      }
+  }
+
+  return false;
 }
 
 int main() {
